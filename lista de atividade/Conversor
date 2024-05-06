@@ -1,0 +1,31 @@
+class ConversorTemperatura:
+    @staticmethod
+    def celsius_para_fahrenheit(celsius):
+        return (celsius * 9/5) + 32
+
+    @staticmethod
+    def fahrenheit_para_celsius(fahrenheit):
+        return (fahrenheit - 32) * 5/9
+
+# Loop para perguntar ao usuário qual conversão deseja fazer
+while True:
+    print("\nEscolha a conversão desejada:")
+    print("1. Celsius para Fahrenheit")
+    print("2. Fahrenheit para Celsius")
+    print("3. Sair")
+
+    escolha = input("Opção: ")
+
+    if escolha == '1':
+        celsius = float(input("Digite a temperatura em Celsius: "))
+        fahrenheit = ConversorTemperatura.celsius_para_fahrenheit(celsius)
+        print("A temperatura em Fahrenheit é:", fahrenheit)
+    elif escolha == '2':
+        fahrenheit = float(input("Digite a temperatura em Fahrenheit: "))
+        celsius = ConversorTemperatura.fahrenheit_para_celsius(fahrenheit)
+        print("A temperatura em Celsius é:", celsius)
+    elif escolha == '3':
+        print("Saindo do programa...")
+        break
+    else:
+        print("Opção inválida. Por favor, escolha novamente.")
