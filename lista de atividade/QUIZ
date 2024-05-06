@@ -1,0 +1,23 @@
+# Dicionário contendo perguntas e respostas do quiz
+quiz = {
+    "Qual é a capital do Brasil?": "Brasília",
+    "Quem escreveu 'Dom Quixote'?": "Miguel de Cervantes",
+    "Quantos planetas existem no sistema solar?": "Oito",
+    "Qual é a fórmula química da água?": "H2O"
+}
+
+# Variável para contar o número de respostas corretas
+respostas_corretas = 0
+
+# Loop para mostrar cada pergunta ao usuário e verificar se a resposta está correta
+for pergunta, resposta_correta in quiz.items():
+    print(pergunta)
+    resposta_usuario = input("Sua resposta: ")
+    if resposta_usuario.lower() == resposta_correta.lower():
+        print("Resposta correta!")
+        respostas_corretas += 1
+    else:
+        print("Resposta incorreta!")
+
+# Mostrar o resultado final
+print("\nVocê acertou {} de {} perguntas.".format(respostas_corretas, len(quiz)))
