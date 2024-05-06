@@ -1,0 +1,64 @@
+class AgendaTelefonica:
+    def __init__(self):
+        self.contatos = {}
+
+    def adicionar_contato(self, nome, numero):
+        self.contatos[nome] = numero
+        print("Contato '{}' adicionado com sucesso.".format(nome))
+
+    def remover_contato(self, nome):
+        if nome in self.contatos:
+            del self.contatos[nome]
+            print("Contato '{}' removido.".format(nome))
+        else:
+            print("Contato '{}' não encontrado na agenda.".format(nome))
+
+    def modificar_contato(self, nome, novo_numero):
+        if nome in self.contatos:
+            self.contatos[nome] = novo_numero
+            print("Número de '{}' atualizado para '{}'.".format(nome, novo_numero))
+        else:
+            print("Contato '{}' não encontrado na agenda.".format(nome))
+
+    def buscar_contato(self, nome):
+        if nome in self.contatos:
+            print("Número de '{}': {}".format(nome, self.contatos[nome]))
+        else:
+            print("Contato '{}' não encontrado na agenda.".format(nome))
+
+# Função para exibir o menu e obter a escolha do usuário
+def exibir_menu():
+    print("\nMenu:")
+    print("1. Adicionar Contato")
+    print("2. Remover Contato")
+    print("3. Modificar Contato")
+    print("4. Buscar Contato")
+    print("5. Sair")
+    escolha = input("Escolha uma opção: ")
+    return escolha
+
+agenda = AgendaTelefonica()
+
+# Loop principal do programa
+while True:
+    opcao = exibir_menu()
+
+    if opcao == '1':
+        nome = input("Digite o nome do contato: ")
+        numero = input("Digite o número do contato: ")
+        agenda.adicionar_contato(nome, numero)
+    elif opcao == '2':
+        nome = input("Digite o nome do contato que deseja remover: ")
+        agenda.remover_contato(nome)
+    elif opcao == '3':
+        nome = input("Digite o nome do contato que deseja modificar: ")
+        novo_numero = input("Digite o novo número: ")
+        agenda.modificar_contato(nome, novo_numero)
+    elif opcao == '4':
+        nome = input("Digite o nome do contato que deseja buscar: ")
+        agenda.buscar_contato(nome)
+    elif opcao == '5':
+        print("Saindo do programa...")
+        break
+    else:
+        print("Opção inválida. Por favor, escolha novamente.")
