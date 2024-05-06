@@ -1,0 +1,74 @@
+# Dicionário para armazenar usernames e passwords
+credenciais = {
+    "usuario1": "senha123",
+    "usuario2": "abc456",
+    "usuario3": "qwerty789"
+}
+
+# Pergunta ao usuário seu username e password
+username = input("Digite seu username: ")
+password = input("Digite sua password: ")
+
+# Verifica se as credenciais estão corretas
+if username in credenciais and credenciais[username] == password:
+    print("Login bem-sucedido! Bem-vindo, {}.".format(username))
+else:
+    print("Credenciais incorretas. Por favor, tente novamente.")
+ou
+# Dicionário para armazenar usernames e passwords
+credenciais = {}
+
+# Dicionário para armazenar tentativas de login
+tentativas_login = {}
+
+# Dicionário para armazenar usuários bloqueados
+usuarios_bloqueados = {}
+
+
+# Função para criar um novo login
+def criar_login():
+    novo_usuario = input("Digite um novo username: ")
+    nova_senha = input("Digite uma nova password: ")
+    credenciais[novo_usuario] = nova_senha
+    print("Novo login criado com sucesso!")
+
+
+# Função para realizar o login
+def fazer_login():
+    username = input("Digite seu username: ")
+
+    # Verifica se o usuário está bloqueado
+    if username in usuarios_bloqueados:
+        print("Seu usuário está bloqueado devido a múltiplas tentativas de login mal sucedidas.")
+        return
+
+    password = input("Digite sua password: ")
+    if username in credenciais and credenciais[username] == password:
+        print("Login bem-sucedido! Bem-vindo, {}.".format(username))
+        # Reseta as tentativas de login se bem sucedido
+        if username in tentativas_login:
+            del tentativas_login[username]
+    else:
+        print("Credenciais incorretas. Por favor, tente novamente.")
+        # Atualiza o número de tentativas de login
+        if username in tentativas_login:
+            tentativas_login[username] += 1
+            if tentativas_login[username] >= 3:
+                usuarios_bloqueados[username] = True
+                print("Seu usuário foi bloqueado devido a múltiplas tentativas de login mal sucedidas.")
+        else:
+            tentativas_login[username] = 1
+
+
+# Menu principal
+while True:
+    opcao = input("Digite '1' para criar um novo login, '2' para fazer login ou '0' para sair: ")
+    if opcao == '1':
+        criar_login()
+    elif opcao == '2':
+        fazer_login()
+    elif opcao == '0':
+        print("Saindo do programa...")
+        break
+    else:
+        print("Opção inválida. Por favor, digite novamente.")
