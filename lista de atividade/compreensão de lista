@@ -1,0 +1,8 @@
+# Lista original de números
+lista_original = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+# Compreensão de lista para obter apenas os números pares
+numeros_pares = [num for num in lista_original if num % 2 == 0]
+
+# Imprimir a nova lista com os números pares
+print(numeros_pares)
