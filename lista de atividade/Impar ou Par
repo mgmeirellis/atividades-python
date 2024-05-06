@@ -1,0 +1,39 @@
+# Pergunta ao usuário quantos números ele deseja inserir
+quantidade_numeros = int(input("Quantos números você deseja inserir? "))
+
+# Inicializa listas para armazenar números pares e ímpares
+numeros_pares = []
+numeros_impares = []
+
+# Loop para obter cada número e verificar se é par ou ímpar
+for i in range(quantidade_numeros):
+    numero = int(input("Digite o {}º número: ".format(i+1)))
+    
+    # Verifica se o número é par ou ímpar e adiciona à lista apropriada
+    if numero % 2 == 0:
+        numeros_pares.append(numero)
+    else:
+        numeros_impares.append(numero)
+
+# Exibe as listas de números pares e ímpares
+print("Números Pares:", numeros_pares)
+print("Números Ímpares:", numeros_impares)
+
+
+
+ou
+# Pergunta ao usuário quantos números ele deseja inserir
+quantidade_numeros = int(input("Quantos números você deseja inserir? "))
+
+# Loop para obter cada número e verificar se é par ou ímpar
+for i in range(quantidade_numeros):
+    numero = int(input("Digite o {}º número: ".format(i+1)))
+    
+    # Verifica se o número é par ou ímpar
+    if numero % 2 == 0:
+        print("{} é um número par.".format(numero))
+    else:
+        print("{} é um número ímpar.".format(numero))
+
+
+
